@@ -1,9 +1,10 @@
 # still in progress
 
-#!/usr/bin/env python
-import requests
 import json
 import os
+
+# !/usr/bin/env python
+import requests
 
 
 def REDCapMedicatImport(meddata):
@@ -35,6 +36,7 @@ def REDCapMedicatImport(meddata):
 
     # check connection
     if str(exportr.status_code) == '200':
+        print('HTTP Status: ' + str(exportr.status_code) + " Connected to SHIELD for download")
         # define the dict to hold the records
         records_dict = {}
         for record in exportr.json():
@@ -70,14 +72,13 @@ def REDCapMedicatImport(meddata):
                 med_dict['redcap_repeat_instrument'] = 'test_results'
                 # increment each instance by one
                 if isinstance(list(records_dict.values())[i][-1], int):
-                    med_dict['redcap_repeat_instance'] = list(records_dict.values())[i][-1] + 1
+                    med_dict['redcap_repeat_instance'] = str(list(records_dict.values())[i][-1] + 1)
                 else:
                     # assign one to records with no repeat instances
-                    med_dict['redcap_repeat_instance'] = 1
-                med_dict['result'] = u['Result']
-                med_dict['order_date'] = u['OrderDate']
-                med_dict['result_date'] = u['ResultDate']
-                med_dict['test_results_complete'] = 2
+                    med_dict['redcap_repeat_instance'] = str(1)
+                med_dict['result'] = str(u['Result'])
+                med_dict['resultdate'] = u['ResultDate']
+                med_dict['test_results_complete'] = str(2)
                 # append the dict to a list
                 records_dict_list.append(med_dict)
 
@@ -97,4 +98,5 @@ def REDCapMedicatImport(meddata):
         'returnFormat': 'json'
         }
 
-    importr = requests.post(os.environ.get("REDCAP_ENDPOINT"),data= importdata)
+    importr = requests.post(os.environ.get("REDCAP_ENDPOINT"), data=importdata)
+    print('HTTP Status: ' + str(importr.status_code) + " Connected to SHIELD for upload")

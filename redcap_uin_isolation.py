@@ -25,8 +25,8 @@ def redcap_uin_isloation(records):
         if len(r.json()) == 0:
             continue
         rdict = dict(r.json()[0])
-        if record["Result"] == "1":
-            rdict['pos_date'] = datetime.strptime(record["ResultDate"], '%Y-%m-%dT%H:%M:%S.%f%z').strftime('%m/%d/%Y')
+        if record["Result"] == 1:
+            rdict['pos_date'] = datetime.strptime(record["ResultDate"].split("T")[0], '%Y-%m-%d').strftime('%m/%d/%Y')
             rdict['test_status'] = "2"
 
             # Serializae the json
