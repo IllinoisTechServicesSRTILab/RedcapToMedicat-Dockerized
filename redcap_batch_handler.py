@@ -34,4 +34,4 @@ if __name__ == "__main__":
     params = vars(parser.parse_args())
 
     # main
-    handler(bucket_name=params["S3ObjectKey"], bucket_key=params["S3ObjectKey"])
+    handler(bucket_name=params["S3BucketName"], bucket_key=params["S3ObjectKey"])
