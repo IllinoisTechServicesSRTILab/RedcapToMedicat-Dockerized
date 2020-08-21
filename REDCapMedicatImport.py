@@ -28,7 +28,7 @@ def REDCapMedicatImport(meddata):
     }
 
     # exported data from source project
-    exportr = requests.post('https://redcap-test.healthinstitute.illinois.edu/api/', data=exportdata)
+    exportr = requests.post(os.environ.get("REDCAP_ENDPOINT"), data=exportdata)
 
     # create data strcutures to accumulate values
     records_dict_list = []
@@ -47,7 +47,7 @@ def REDCapMedicatImport(meddata):
                 if record['uin'] != "":
                     for u in meddata:
                         # match the UINs
-                        if record['uin'] == u['UIN']:
+                        if record['uin'] == u['uin']:
                             # append UIN and repeat instance number
                             repeat_instances.append(record['uin'])
                             if record['redcap_repeat_instance'] != "":
@@ -64,7 +64,7 @@ def REDCapMedicatImport(meddata):
         # iterate through each record to build new json
         for u in meddata:
             med_dict = {}
-            if u['UIN'] in list(records_dict.values())[i]:
+            if u['uin'] in list(records_dict.values())[i]:
                 med_dict['record_id'] = list(records_dict.keys())[i]
                 med_dict['redcap_event_name'] = 'samples_arm_1'
                 med_dict['redcap_repeat_instrument'] = 'test_results'
@@ -97,4 +97,4 @@ def REDCapMedicatImport(meddata):
         'returnFormat': 'json'
         }
 
-    importr = requests.post(os.environ.get("https://redcap-test.healthinstitute.illinois.edu/api/"),data= importdata)
+    importr = requests.post(os.environ.get("REDCAP_ENDPOINT"),data= importdata)

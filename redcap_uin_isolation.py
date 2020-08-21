@@ -18,7 +18,7 @@ def redcap_uin_isloation(records):
             'exportSurveyFields': 'false',
             'exportDataAccessGroups': 'false',
             'returnFormat': 'json',
-            'filterLogic': '[uin] = ' + record["UIN"]
+            'filterLogic': '[uin] = ' + record["uin"]
         }
         r = requests.post(os.environ.get("REDCAP_ENDPOINT"),data=data)
         print('HTTP Status: ' + str(r.status_code) + " Connected to QIR for download")
