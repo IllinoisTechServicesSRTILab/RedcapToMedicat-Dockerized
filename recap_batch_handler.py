@@ -1,6 +1,6 @@
 import json
 import os
-
+import argparse
 import boto3
 
 from REDCapMedicatImport import REDCapMedicatImport
@@ -26,4 +26,12 @@ def handler(bucket_name, bucket_key):
 
 
 if __name__ == "__main__":
-    handler(None, None)
+
+    # read in command line parameters
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--S3BucketName', required=True)
+    parser.add_argument('--S3ObjectKey', required=True)
+    params = vars(parser.parse_args())
+
+    # main
+    handler(bucket_name=params["S3ObjectKey"], bucket_key=params["S3ObjectKey"])
