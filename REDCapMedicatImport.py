@@ -69,7 +69,7 @@ def REDCapMedicatImport(meddata):
             if u['uin'] in list(records_dict.values())[i]:
                 med_dict['record_id'] = list(records_dict.keys())[i]
                 med_dict['redcap_event_name'] = 'samples_arm_1'
-                med_dict['redcap_repeat_instrument'] = 'test_results'
+                med_dict['redcap_repeat_instrument'] = ''
                 # increment each instance by one
                 if isinstance(list(records_dict.values())[i][-1], int):
                     med_dict['redcap_repeat_instance'] = str(list(records_dict.values())[i][-1] + 1)
