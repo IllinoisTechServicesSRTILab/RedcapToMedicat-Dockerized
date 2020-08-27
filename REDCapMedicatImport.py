@@ -79,6 +79,13 @@ def REDCapMedicatImport(meddata):
                 med_dict['result'] = str(u['Result'])
                 med_dict['resultdate'] = u['ResultDate']
                 med_dict['test_results_complete'] = str(2)
+
+                # for backward compatibility
+                if 'TestName' in u:
+                    med_dict['testname'] = u['TestName']
+                if 'TestDate' in u:
+                    med_dict['testdate'] = u['TestDate']
+
                 # append the dict to a list
                 records_dict_list.append(med_dict)
 

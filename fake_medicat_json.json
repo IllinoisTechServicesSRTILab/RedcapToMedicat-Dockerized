@@ -1,27 +1,23 @@
 [
   {
-    "uin": "111111111",
-    "ResultDate": "2020-08-20T23:00:55.000Z",
-    "Result": 0
+    "uin": "657427043",
+    "ResultDate": "2020-08-27T11:57:56.317Z",
+    "Result": 0,
+    "TestName": "COVID-19 PCR",
+    "TestDate": "2020-08-26T11:57:56.317Z"
   },
   {
-    "uin": "111111112",
-    "ResultDate": "2020-08-20T23:00:43.000Z",
-    "Result": 1
+    "uin": "657427043",
+    "ResultDate": "2020-08-27T11:57:56.317Z",
+    "Result": 4,
+    "TestName": "COVID-19 PCR",
+    "TestDate": "2020-08-26T11:57:56.317Z"
   },
   {
-    "uin": "111111113",
-    "ResultDate": "2020-08-20T22:58:59.000Z",
-    "Result": 0
-  },
-  {
-    "uin": "111111114",
-    "ResultDate": "2020-08-20T22:58:01.000Z",
-    "Result": 0
-  },
-  {
-    "uin": "111111115",
-    "ResultDate": "2020-08-20T22:57:37.000Z",
-    "Result": 1
+    "uin": "657427043",
+    "ResultDate": "2020-08-27T11:57:56.317Z",
+    "Result": 1,
+    "TestName": "COVID-19 Antigen",
+    "TestDate": ""
   }
 ]
