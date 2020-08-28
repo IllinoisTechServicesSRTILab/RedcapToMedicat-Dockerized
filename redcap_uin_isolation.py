@@ -48,4 +48,3 @@ def redcap_uin_isloation(records):
             # Post the upload and print the connection status
             r = requests.post(os.environ.get("REDCAP_ENDPOINT"),data=data)
             print('HTTP Status: ' + str(r.status_code) + " Connected to QIR for upload", flush=True)
-
