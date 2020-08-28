@@ -21,7 +21,7 @@ def redcap_uin_isloation(records):
             'filterLogic': '[uin] = ' + record["uin"]
         }
         r = requests.post(os.environ.get("REDCAP_ENDPOINT"),data=data)
-        print('HTTP Status: ' + str(r.status_code) + " Connected to QIR for download")
+        print('HTTP Status: ' + str(r.status_code) + " Connected to QIR for download", flush=True)
         if len(r.json()) == 0:
             continue
         rdict = dict(r.json()[0])
@@ -47,5 +47,5 @@ def redcap_uin_isloation(records):
 
             # Post the upload and print the connection status
             r = requests.post(os.environ.get("REDCAP_ENDPOINT"),data=data)
-            print('HTTP Status: ' + str(r.status_code) + " Connected to QIR for upload")
+            print('HTTP Status: ' + str(r.status_code) + " Connected to QIR for upload", flush=True)
 

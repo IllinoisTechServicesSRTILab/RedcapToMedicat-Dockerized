@@ -36,7 +36,7 @@ def REDCapMedicatImport(meddata):
 
     # check connection
     if str(exportr.status_code) == '200':
-        print('HTTP Status: ' + str(exportr.status_code) + " Connected to SHIELD for download")
+        print('HTTP Status: ' + str(exportr.status_code) + " Connected to SHIELD for download", flush=True)
         # define the dict to hold the records
         records_dict = {}
         for record in exportr.json():
