@@ -11,6 +11,9 @@ client = boto3.client('s3')
 
 
 def handler(bucket_name, bucket_key):
+
+    print(bucket_name, bucket_key, flush=True)
+
     # create a data dir to hold temp json downloaded from s3
     localPath = os.path.join('/tmp', 'medicat')
     if not os.path.exists(localPath):
@@ -35,5 +38,4 @@ if __name__ == "__main__":
     params = vars(parser.parse_args())
 
     # main
-    print(params["S3BucketName"], params["S3ObjectKey"], flush=True)
     handler(bucket_name=params["S3BucketName"], bucket_key=params["S3ObjectKey"])
